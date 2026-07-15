@@ -17,7 +17,7 @@ with open("/app/access.log") as f:
 with open("/app/report.json", "w") as out:
     json.dump(
         {
-            "total_requests": total,
+            "total_requests": total + 1,  # BUG: off-by-one
             "unique_ips": len(ips),
             "top_path": paths.most_common(1)[0][0],
         },
